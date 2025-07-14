@@ -1,13 +1,33 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
+import useAuth from "../../../Hooks/useAuth";
 
 const Login = () => {
   const { register, handleSubmit , formState:{errors} } = useForm();
 
+  const {loginUser , signInWithGoogle} = useAuth();
+
   const handleLogin = (data) => {
     console.log(data);
+    loginUser(data.email , data.password)
+    .then(result =>{
+      console.log(result.user)
+    })
+    .catch(error=>{
+      console.log(error);
+    })
   };
+
+  const handleGoogleLogin = ()=>{
+    signInWithGoogle()
+    .then(result =>{
+      console.log(result)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  }
   return (
     <div className="card text-black  w-full max-w-md shrink-0 ">
       <div className="card-body">
@@ -62,9 +82,9 @@ const Login = () => {
 
           {/* Login Link */}
           <div>
-            <p className="link link-hover text-base">
+            <p className="text-base">
               Don't have an account ?{" "}
-              <Link to='/register' className="text-[#8FA748]">Register</Link>
+              <Link to='/register' className="text-[#8FA748] link link-hover">Register</Link>
             </p>
           </div>
         </form>
@@ -74,7 +94,7 @@ const Login = () => {
         </div>
 
         {/* Google login */}
-        <button className="btn bg-white text-black border-[#e5e5e5]">
+        <button onClick={handleGoogleLogin} className="btn bg-white text-black border-[#e5e5e5]">
           <svg
             aria-label="Google logo"
             width="16"
