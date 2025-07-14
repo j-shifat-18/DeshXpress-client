@@ -2,18 +2,34 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 
-const Login = () => {
-  const { register, handleSubmit , formState:{errors} } = useForm();
+const Register = () => {
+    const {register , handleSubmit , formState:{errors}} = useForm();
 
-  const handleLogin = (data) => {
-    console.log(data);
-  };
+    const handleRegister = data =>{
+        console.log(data)
+    }
   return (
     <div className="card text-black  w-full max-w-md shrink-0 ">
       <div className="card-body">
-        <h1 className="text-4xl font-extrabold">Welcome Back</h1>
-        <p className="font-medium text-lg mb-5">Login with DeshXpress</p>
-        <form className="fieldset" onSubmit={handleSubmit(handleLogin)}>
+        <h1 className="text-4xl font-extrabold">Create an Account</h1>
+        <p className="font-medium text-lg mb-5">Register with DeshXpress</p>
+        <form className="fieldset" onSubmit={handleSubmit(handleRegister)}>
+
+            {/* Name */}
+          <label className="label font-medium text-[#0F172A] text-base">
+            Name
+          </label>
+          <input
+            type="text"
+            {...register('name', {
+                required:true,
+            })}
+            className="input bg-white w-full border-[#CBD5E1]"
+            placeholder="Name"
+          />
+          {
+            errors.name?.type === 'required' && <p className="text-red-500 text-base">Please enter your name .</p>
+          }
 
           {/* Email */}
           <label className="label font-medium text-[#0F172A] text-base">
@@ -43,6 +59,7 @@ const Login = () => {
             type="password"
             {...register('password' , {
                 required:true ,
+                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{6,}$/,
             })}
             className="input w-full bg-white border-[#CBD5E1]"
             placeholder="Password"
@@ -51,20 +68,18 @@ const Login = () => {
           {
             errors.password?.type === 'required' && <p className="text-red-500 text-base">Please enter Password .</p>
           }
-          <div>
-            <Link to='/forgetPassword' className="link link-hover text-base">
-              Forget password ?{" "}
-            </Link>
-          </div>
+          {
+            errors.password?.type === 'pattern' && <p className="text-red-500 text-base">Password must have one uppercase , one lower case and one special character.</p>
+          }
 
           {/* Register Button */}
-          <button className="btn text-lg mt-4 bg-primary mb-3">Login</button>
+          <button className="btn text-lg mt-4 bg-primary mb-3">Register</button>
 
           {/* Login Link */}
           <div>
             <p className="link link-hover text-base">
-              Don't have an account ?{" "}
-              <Link to='/register' className="text-[#8FA748]">Register</Link>
+              Already have an account ?{" "}
+              <Link className="text-[#8FA748]">Login</Link>
             </p>
           </div>
         </form>
@@ -102,11 +117,11 @@ const Login = () => {
               ></path>
             </g>
           </svg>
-          Login with Google
+          Register with Google
         </button>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

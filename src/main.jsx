@@ -5,12 +5,12 @@ import App from "./App.jsx";
 
 import { RouterProvider } from "react-router";
 import { router } from "./Routes/router.jsx";
+import { AuthContext } from "./Contexts/AuthContext/AuthContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* <div className="font-urbanist max-w-7xl mx-auto">
-      
-    </div> */}
-    <RouterProvider router={router} />
+    <AuthContext>
+      <RouterProvider router={router} />
+    </AuthContext>
   </StrictMode>
 );

@@ -14,7 +14,7 @@ const AuthLayout = () => {
           <div className="pt-6 pl-6">
             <DeshXpressLogo></DeshXpressLogo>
           </div>
-          <div className="flex justify-center items-center h-screen">
+          <div className="flex justify-center items-center max-h-screen">
             <Outlet></Outlet>
           </div>
         </div>
