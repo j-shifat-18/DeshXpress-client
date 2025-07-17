@@ -1,20 +1,27 @@
 import React from 'react';
 import useAuth from '../Hooks/useAuth';
 import Loader from '../Components/Shared/Loader/Loader';
-import { Navigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 
 const PrivateRoute = ({children}) => {
-    const {user , loading} = useAuth();
+  const { user, loading } = useAuth();
+  console.log(user)
+  console.log('before loader',loading);
 
-    if(loading){
-        return <Loader></Loader>
-    }
+  const location = useLocation();
+//   console.log(location.pathname)
 
-    if(!user){
-      return <Navigate to='/login'></Navigate>
-    }
-    
-    return children;
+  if (loading) {
+    return <Loader></Loader>;
+  }
+
+  console.log('loading after loader' , loading , user);
+
+  if (!user) {
+    return <Navigate to="/login" state={location.pathname}></Navigate>;
+  }
+
+  return children;
 };
 
 export default PrivateRoute;

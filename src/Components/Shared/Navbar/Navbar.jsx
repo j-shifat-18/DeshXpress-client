@@ -13,6 +13,9 @@ const Navbar = () => {
         <NavLink to="/coverage">Coverage</NavLink>
       </li>
       <li>
+        <NavLink to="/sendParcel">Send Parcel</NavLink>
+      </li>
+      <li>
         <NavLink to="/trackOrder">Track Order</NavLink>
       </li>
       
@@ -46,7 +49,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="w-6 text-black"><DeshXpressLogo></DeshXpressLogo></a>
+        <div className="w-6 text-black"><DeshXpressLogo></DeshXpressLogo></div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-black text-base font-medium">

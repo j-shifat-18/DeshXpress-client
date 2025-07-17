@@ -1,11 +1,11 @@
 import React from "react";
-import DeshXpressLogo from "../../DeshXpressLogo/DeshXpressLogo";
+import DeshXpressLogoFooter from "../../DeshXpressLogo/DeshXpressLogoFooter";
 
 const Footer = () => {
   return (
     <footer className="footer footer-horizontal footer-center bg-[#0B0B0B] text-primary-content p-10">
       <aside>
-        <DeshXpressLogo></DeshXpressLogo>
+        <DeshXpressLogoFooter></DeshXpressLogoFooter>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>
       <nav>
