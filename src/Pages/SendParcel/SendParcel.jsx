@@ -130,7 +130,8 @@ const SendParcel = () => {
       created_at,
       trackingId,
       email,
-      price: total
+      price: total,
+      status: 'unpaid',
     };
     Swal.fire({
       title: "Delivery Cost Details",

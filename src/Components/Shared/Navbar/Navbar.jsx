@@ -18,6 +18,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/trackOrder">Track Order</NavLink>
       </li>
+      <li>
+        <NavLink to="/dashboard">Dashboard</NavLink>
+      </li>
       
     </>
   );
